@@ -1,0 +1,245 @@
+* {
+    box-sizing: border-box;
+    font-family: inherit;
+}
+
+html[lang=en] *[lang=es] {
+    display: none;
+}
+
+html[lang=es] *[lang=en] {
+    display: none;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: 'segoe ui', helvetica, sans-serif;
+    font-size: 10px;
+    margin: 0;
+    height: 100vh;
+}
+
+header {
+    flex: 0;
+    padding: 1.2em;
+}
+
+header .lang {
+    align-items: center;
+    display: flex;
+    position: absolute;
+    top: 1em;
+    right: 1em;
+}
+
+header .lang a {
+    cursor: pointer;
+    display: inline-block;
+    font-size: 120%;
+    margin: 0 .5em;
+    width: 2ch;
+}
+
+header .lang a.active {
+    font-weight: 600;
+}
+
+header h1 {
+    font-size: 300%;
+    font-weight: 400;
+    margin: 0;
+}
+
+main {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+
+main .menu {
+    align-items: center;
+    flex: initial;
+    padding: 0 1.2em;
+}
+
+main .menu h2 {
+    font-size: 250%;
+    font-weight: 400;
+    line-height: 1.8;
+    margin: 0 2em 0 0;
+}
+
+main .menu ul {
+    border-radius: 1em;
+    box-shadow: 0 0 .1em;
+    display: flex;
+    font-size: 200%;
+    list-style-type: none;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+}
+
+main .menu ul li {
+    background: linear-gradient(0deg, transparent, rgba(0, 0, 0, 0.3));
+    border-left: solid .1em #a3a3a3;
+    cursor: pointer;
+    flex: 1;
+    padding: .1em 1em .3em;
+    text-align: center;
+}
+
+main .menu ul li:first-child {
+    border-left-style: none;
+}
+
+main .menu ul li:hover {
+    background: linear-gradient(0deg, transparent, rgba(0, 0, 0, 0.1));
+}
+
+main .menu ul li.active {
+    background-color: rgba(0, 0, 0, 0.2);
+    box-shadow: inset .01em .01em .01em;
+    padding: .2em 1em;
+}
+
+main .panels {
+    flex: 1;
+    height: calc(100% - 5em);
+    overflow: auto;
+    position: relative;
+    width: 100%;
+}
+
+main .panels .panel {
+    height: 100%;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    transform: translateX(-100%);
+    transition: transform .2s linear, opacity .2s linear;
+    width: 100%;
+}
+
+main .panels .panel.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+main .panels .panel input {
+    border: .05em #a3a3a3;
+    border-style: none none solid none;
+}
+
+main .panels .panel.roman {
+    padding: 3em 1.2em;
+}
+
+main .panels .panel.roman div.result {
+    margin-top: 2em;
+}
+
+main .panels .panel.roman label {
+    display: flex;
+    flex-direction: column;
+    font-size: 300%;
+}
+
+main .panels .panel.roman label input {
+    flex: 0 60%;
+    font-size: 100%;
+    text-align: right;
+}
+
+main .panels .panel.mayan {
+    display: flex;
+    flex-direction: column;
+    padding: 3em 4em;
+}
+
+main .panels .panel.mayan div.input {
+    flex: 0;
+}
+
+main .panels .panel.mayan div.result {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    margin-top: 2em;
+}
+
+main .panels .panel.mayan div.result label {
+    display: block;
+    flex: 0;
+}
+
+main .panels .panel.mayan div.result .canvas {
+    flex: 1;
+    overflow: auto;
+}
+
+main .panels .panel.mayan label {
+    display: flex;
+    flex-direction: column;
+    font-size: 300%;
+}
+
+main .panels .panel.mayan label input {
+    font-size: 100%;
+    text-align: right;
+}
+
+footer {
+    flex: 0;
+    text-align: center;
+}
+
+footer a {
+    color: rgba(0, 0, 0, 0.5);
+    line-height: 2;
+    text-decoration: none;
+}
+
+footer a svg {
+    fill: rgba(0, 0, 0, 0.5);
+    max-width: 2em;
+}
+
+@media (min-width: 1024px) {
+    body {
+        font-size: 16px;
+    }
+
+    main .menu {
+        display: flex;
+    }
+
+    main .menu ul li {
+        flex: initial;
+    }
+
+    main .panels .panel.roman {
+        padding: 3em 4em;
+    }
+
+    main .panels .panel.roman label {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    main .panels .panel.mayan {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    main .panels .panel.mayan div.input {
+        flex: 0 40%;
+    }
+
+    main .panels .panel.mayan div.result {
+        flex: 0 calc(60% - 1em);
+        margin-top: 0;
+    }
+}

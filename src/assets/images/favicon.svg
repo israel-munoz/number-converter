@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- FAVICON IMAGE REFERENCE -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+  <style>
+    text { font-family: 'segoe ui'; font-weight: 600; }
+    .text_1 { font-size: 20px; fill: blue; }
+    .text_2 { font-size: 30px; }
+    .text_3 { font-size: 35px; fill: red; }
+  </style>
+  <g
+     transform="translate(8,3)">
+    <text transform="rotate(-10)" y="20" x="0" class="text_1">1</text>
+    <text transform="rotate(15)" y="20" x="20" class="text_2">2</text>
+    <text transform="rotate(-5)" y="40" x="5" class="text_3">3</text>
+  </g>
+</svg>
