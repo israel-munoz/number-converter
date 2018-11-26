@@ -1,13 +1,15 @@
-export class RomanConverter {
-    constructor(container: HTMLElement) {
-        const input: HTMLInputElement = container.querySelector('.input-control');
-        const output: HTMLInputElement = container.querySelector('.output-control');
+export default class RomanConverter {
+    constructor(container) {
+        const that = this;
+        const input = container.querySelector('.input-control');
+        const output = container.querySelector('.output-control');
         input.addEventListener('input', () => {
-            output.value = this.toRoman(input.valueAsNumber || Number(input.value));
+            output.value = that._toRoman(input.valueAsNumber || Number(input.value));
         });
     }
 
-    private toRoman(input: number): string {
+    _toRoman(input) {
+        const that = this;
         let result = '';
 
         if (input >= 1000) {
@@ -19,19 +21,19 @@ export class RomanConverter {
         }
         const c = Math.floor(input / 100);
         if (c > 0) {
-            result += this.digitToRoman(c, 'C', 'D', 'M');
+            result += that._digitToRoman(c, 'C', 'D', 'M');
             input -= c * 100;
         }
         const x = Math.floor(input / 10);
         if (x > 0) {
-            result += this.digitToRoman(x, 'X', 'L', 'C');
+            result += that._digitToRoman(x, 'X', 'L', 'C');
             input -= x * 10;
         }
-        result += this.digitToRoman(input, 'I', 'V', 'X');
+        result += that._digitToRoman(input, 'I', 'V', 'X');
         return result;
     }
 
-    private digitToRoman(digit: number, unit: string, middle: string, next: string): string {
+    _digitToRoman(digit, unit, middle, next) {
         let result = '';
         if (digit === 4) {
             result = unit + middle;

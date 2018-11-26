@@ -3,22 +3,30 @@ const htmlPlugin = require('html-webpack-plugin');
 const cssPlugin = require('mini-css-extract-plugin');
 const uglifyPlugin = require('uglifyjs-webpack-plugin');
 const optimizeCssPlugin = require('optimize-css-assets-webpack-plugin');
+const isProduction = process.env.NODE_ENV === 'production';
 
 module.exports = {
-    entry: './src/main.ts',
+    entry: './src/main.js',
     output: {
         filename: 'bundle.js',
         path: path.resolve(__dirname, 'dist')
     },
-    devtool: 'inline-source-map',
+    devtool: isProduction ? null : 'inline-source-map',
     resolve: {
-        extensions: ['.ts', '.js']
+        extensions: ['.js']
     },
     module: {
         rules: [{
-            test: /\.ts$/,
-            use: 'ts-loader',
-            exclude: /node_modules/
+            test: /\.js$/,
+            exclude: /node_modules/,
+            use: [
+                {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['@babel/preset-env']
+                    }
+                }
+            ]
         }, {
             test: /\.css$/,
             use: [{
@@ -63,7 +71,7 @@ module.exports = {
             new uglifyPlugin({
                 cache: true,
                 parallel: true,
-                sourceMap: true
+                sourceMap: !isProduction
             }),
             new optimizeCssPlugin({})
         ]

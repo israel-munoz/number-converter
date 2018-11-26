@@ -1,5 +1,5 @@
-import { MayanConverter } from './mayan-converter';
-import { RomanConverter } from './roman-converter';
+import RomanConverter from './roman-converter';
+import MayanConverter from './mayan-converter';
 
 require('./assets/css/styles.css');
 require('./assets/images/favicon.png');
@@ -17,9 +17,9 @@ NodeList.prototype.forEach = NodeList.prototype.forEach || function(callback, th
     const romanConverter = new RomanConverter(document.querySelector('.roman'));
     const mayanConverter = new MayanConverter(document.querySelector('.mayan'));
 
-    function setLang(container: HTMLElement) {
-        container.addEventListener('click', (evt: Event) => {
-            const a = evt.target as HTMLElement;
+    function setLang(container) {
+        container.addEventListener('click', (evt) => {
+            const a = evt.target;
             if (a.dataset.lang) {
                 document.querySelector('html').lang = a.dataset.lang;
                 container.querySelectorAll('a').forEach((opt) => {
@@ -35,25 +35,25 @@ NodeList.prototype.forEach = NodeList.prototype.forEach || function(callback, th
         });
     }
 
-    function setMenu(menu: HTMLElement) {
+    function setMenu(menu) {
         menu.addEventListener('click', menuOptionClick);
     }
 
-    function menuOptionClick(evt: Event) {
-        const target = evt.target as HTMLElement;
+    function menuOptionClick(evt) {
+        const target = evt.target;
         const option = target.dataset.option || target.parentElement.dataset.option;
 
         if (option) {
             const menu = this.querySelectorAll('*[data-option]');
             const panels = document.querySelectorAll('.panels .panel');
-            menu.forEach((item: HTMLElement) => {
+            menu.forEach((item) => {
                 if (item.dataset.option === option) {
                     item.classList.add('active');
                 } else {
                     item.classList.remove('active');
                 }
             });
-            panels.forEach((panel: HTMLElement) => {
+            panels.forEach((panel) => {
                 if (panel.classList.contains(option)) {
                     panel.classList.add('active');
                 } else {

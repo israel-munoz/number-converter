@@ -1,20 +1,17 @@
-export enum DrawStyle {
-    Fill,
-    Stroke,
-    Both
-}
+import Symbol from 'es6-symbol';
 
-export class Canvas {
-    private readonly canvas: HTMLCanvasElement;
-    private readonly context: CanvasRenderingContext2D;
-    private readonly unit: number;
-    private readonly radius: number;
+export const DrawStyle = Object.freeze({
+    Fill: Symbol('fill'),
+    Stroke: Symbol('stroke'),
+    Both: Symbol('both')
+});
 
-    public set height(value: number) {
+export default class Canvas {
+    set height(value) {
         this.canvas.height = value * this.unit;
     }
 
-    constructor(canvas: HTMLCanvasElement) {
+    constructor(canvas) {
         this.canvas = canvas;
         this.context = canvas.getContext('2d');
         this.unit = 3;
@@ -25,7 +22,7 @@ export class Canvas {
         this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
     }
 
-    draw(drawStyle: DrawStyle, func: () => void) {
+    draw(drawStyle, func) {
         this.context.beginPath();
         func();
         if (drawStyle === DrawStyle.Stroke || drawStyle === DrawStyle.Both) {
@@ -38,13 +35,13 @@ export class Canvas {
         this.context.closePath();
     }
 
-    move(x: number, y: number) {
+    move(x, y) {
         x *= this.unit;
         y *= this.unit;
         this.context.moveTo(x, y);
     }
 
-    circle(x: number, y: number, radius?: number) {
+    circle(x, y, radius) {
         radius = (radius || this.radius) * this.unit;
         x *= this.unit;
         y *= this.unit;
@@ -53,7 +50,7 @@ export class Canvas {
         });
     }
 
-    line(x: number, y: number, width: number, height: number) {
+    line(x, y, width, height) {
         x *= this.unit;
         y *= this.unit;
         width *= this.unit;
@@ -63,7 +60,7 @@ export class Canvas {
         });
     }
 
-    curve(cp1x: number, cp1y: number, cp2x: number, cp2y: number, x: number, y: number) {
+    curve(cp1x, cp1y, cp2x, cp2y, x, y) {
         this.context.bezierCurveTo(
             cp1x * this.unit,
             cp1y * this.unit,
