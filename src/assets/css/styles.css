@@ -21,7 +21,7 @@ body {
 }
 
 header {
-    flex: 0;
+    flex: 0 auto;
     padding: 1.2em;
 }
 
@@ -160,7 +160,7 @@ main .panels .panel.mayan {
 }
 
 main .panels .panel.mayan div.input {
-    flex: 0;
+    flex: 0 auto;
 }
 
 main .panels .panel.mayan div.result {
@@ -172,7 +172,7 @@ main .panels .panel.mayan div.result {
 
 main .panels .panel.mayan div.result label {
     display: block;
-    flex: 0;
+    flex: 0 auto;
 }
 
 main .panels .panel.mayan div.result .canvas {
@@ -192,7 +192,7 @@ main .panels .panel.mayan label input {
 }
 
 footer {
-    flex: 0;
+    flex: 0 auto;
     text-align: center;
 }
 
@@ -215,9 +215,17 @@ footer a svg {
     main .menu {
         display: flex;
     }
+    
+    main .menu h2 {
+        flex: 0 50%;
+    }
+
+    main .menu nav {
+        flex: 0 50%;
+    }
 
     main .menu ul li {
-        flex: initial;
+        flex: 1;
     }
 
     main .panels .panel.roman {
