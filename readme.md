@@ -3,5 +3,7 @@ Conversion from decimal to different numeric systems.
 
 http://experiments.destesoft.com/number-converter/
 
+Developed with ES6 and CSS3. Built with Webpack.
+
 #### Support
-All major browsers up to date supported. There are some errors in IE 11 layout, due to its poor implementation of flex, but functionality is supported.
+All major browsers supported.
