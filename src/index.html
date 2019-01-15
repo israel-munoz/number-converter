@@ -26,6 +26,10 @@
             </h2>
             <nav>
                 <ul>
+                    <li data-option="letter">
+                        <span lang="en">Text</span>
+                        <span lang="es">Texto</span>
+                    </li>
                     <li data-option="roman">
                         <span lang="en">Roman numbers</span>
                         <span lang="es">N&uacute;meros romanos</span>
@@ -38,6 +42,22 @@
             </nav>
         </div>
         <div class="panels">
+            <div class="panel letter">
+                <div class="input">
+                    <label>
+                        <span lang="en">Decimal value</span>
+                        <span lang="es">Valor decimal</span>
+                        <input type="number" id="letter-input" class="input-control"/>
+                    </label>
+                </div>
+                <div class="result">
+                    <label>
+                        <span lang="en">Text value</span>
+                        <span lang="es">Valor en texto</span>
+                        <textarea id="letter-result" class="output-control" readonly="readonly"></textarea>
+                    </label>
+                </div>
+            </div>
             <div class="panel roman">
                 <div class="input">
                     <label>
@@ -50,7 +70,7 @@
                     <label>
                         <span lang="en">Roman number</span>
                         <span lang="es">N&uacute;mero romano</span>
-                        <input id="roman-result" class="output-control" type="text" readonly="true"/>
+                        <input id="roman-result" class="output-control" type="text" readonly="readonly"/>
                     </label>
                 </div>
             </div>

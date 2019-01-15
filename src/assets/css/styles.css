@@ -82,10 +82,13 @@ main .menu ul {
 }
 
 main .menu ul li {
+    align-items: center;
     background: linear-gradient(0deg, transparent, rgba(0, 0, 0, 0.3));
     border-left: solid .1em #a3a3a3;
     cursor: pointer;
+    display: flex;
     flex: 1;
+    justify-content: center;
     padding: .1em 1em .3em;
     text-align: center;
 }
@@ -116,6 +119,7 @@ main .panels .panel {
     height: 100%;
     left: 0;
     opacity: 0;
+    padding: 3em 1.2em;
     position: absolute;
     top: 0;
     transform: translateX(-100%);
@@ -128,35 +132,58 @@ main .panels .panel.active {
     transform: translateX(0);
 }
 
-main .panels .panel input {
+main .panels .panel label {
+    font-size: 300%;
+}
+
+main .panels .panel input,
+main .panels .panel textarea {
     border: .05em #a3a3a3;
     border-style: none none solid none;
 }
 
+main .panels .panel.letter,
 main .panels .panel.roman {
     padding: 3em 1.2em;
 }
 
+main .panels .panel.letter div.result,
 main .panels .panel.roman div.result {
     margin-top: 2em;
 }
 
+main .panels .panel.letter div.result {
+    height: calc(100% - 3.25em);
+}
+
+main .panels .panel.letter label,
 main .panels .panel.roman label {
     display: flex;
     flex-direction: column;
-    font-size: 300%;
 }
 
+main .panels .panel.letter label {
+    height: 100%;
+}
+
+main .panels .panel.letter label input,
 main .panels .panel.roman label input {
     flex: 0 60%;
     font-size: 100%;
     text-align: right;
 }
 
+main .panels .panel.letter label textarea {
+    font-family: inherit;
+    font-size: 100%;
+    flex: 0 60%;
+    height: 100%;
+    resize: none;
+}
+
 main .panels .panel.mayan {
     display: flex;
     flex-direction: column;
-    padding: 3em 4em;
 }
 
 main .panels .panel.mayan div.input {
@@ -183,7 +210,6 @@ main .panels .panel.mayan div.result .canvas {
 main .panels .panel.mayan label {
     display: flex;
     flex-direction: column;
-    font-size: 300%;
 }
 
 main .panels .panel.mayan label input {
@@ -228,10 +254,11 @@ footer a svg {
         flex: 1;
     }
 
-    main .panels .panel.roman {
+    main .panels .panel {
         padding: 3em 4em;
     }
 
+    main .panels .panel.letter label,
     main .panels .panel.roman label {
         flex-direction: row;
         justify-content: space-between;

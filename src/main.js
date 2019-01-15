@@ -1,5 +1,6 @@
 import RomanConverter from './roman-converter';
 import MayanConverter from './mayan-converter';
+import LetterConverter from './letter-converter';
 
 require('./assets/css/styles.css');
 require('./assets/images/favicon.png');
@@ -16,6 +17,7 @@ NodeList.prototype.forEach = NodeList.prototype.forEach || function(callback, th
     setMenu(document.querySelector('.menu nav'));
     const romanConverter = new RomanConverter(document.querySelector('.roman'));
     const mayanConverter = new MayanConverter(document.querySelector('.mayan'));
+    const letterConverter = new LetterConverter(document.querySelector('.letter'));
 
     function setLang(container) {
         container.addEventListener('click', (evt) => {
@@ -31,6 +33,8 @@ NodeList.prototype.forEach = NodeList.prototype.forEach || function(callback, th
                 });
                 const title = document.querySelector(`h1 *[lang=${a.dataset.lang}]`).textContent;
                 document.title = title;
+
+                letterConverter.refresh();
             }
         });
     }
