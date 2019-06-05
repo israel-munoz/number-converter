@@ -12,6 +12,12 @@ module.exports = {
         path: path.resolve(__dirname, 'dist')
     },
     devtool: isProduction ? null : 'inline-source-map',
+    devServer: {
+        contentBase: path.join(__dirname, 'dist'),
+        compress: true,
+        port: 1000,
+        watchContentBase: true
+    },
     resolve: {
         extensions: ['.js']
     },
@@ -37,9 +43,9 @@ module.exports = {
                 }
             }, {
                 loader: 'css-loader',
-                options: {
-                    minimize: true
-                }
+                // options: {
+                //     minimize: true
+                // }
             }],
             exclude: /node_modules/
         }, {
