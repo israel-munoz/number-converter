@@ -1,6 +1,6 @@
 {
     "name": "number-converter",
-    "version": "1.0.3",
+    "version": "1.1.0",
     "description": "Conversion from decimal to different numeric systems.",
     "scripts": {
         "build": "webpack --mode production --progress --colors",
