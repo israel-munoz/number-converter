@@ -1,6 +1,7 @@
 const { resolve, join } = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const ESLintPlugin = require('eslint-webpack-plugin');
 const isProduction = process.env.NODE_ENV === 'production';
 
 module.exports = {
@@ -55,6 +56,7 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: 'styles.css',
             chunkFilename: '[name].css?v=[hash]'
-        })
+        }),
+        new ESLintPlugin()
     ]
 }
