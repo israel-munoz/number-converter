@@ -6,8 +6,8 @@ export default class LetterSpanishConverter {
     const m2 = 2000000;
     const b = 1000000000000;
     const b2 = 2000000000000;
-    const t = 1000000000000000000;
-    const t2 = 2000000000000000000;
+    const t = 1000000000000000000n;
+    const t2 = 2000000000000000000n;
 
     if (value < 0) {
       return 'menos ' + this.convert(Math.abs(value));
